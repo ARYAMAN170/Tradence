@@ -1,4 +1,3 @@
-The Workflow Engine
 Hi there. You asked for a backend assignment that demonstrates fundamentals in Python, API design, and logical structuring without relying on heavy ML libraries or frontend flashiness. You wanted to see if I could build a system that manages state, handles loops, and keeps things clean.
 
 
@@ -41,3 +40,4 @@ There is always more to do. Right now, the state is stored in memory. It works g
 
 
 But for now, this meets the brief: it's clean, it works, and it respects the state. I hope you enjoy breaking it as much as I enjoyed building it.
+
