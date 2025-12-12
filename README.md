@@ -7,11 +7,7 @@ This is that system.
 
 I built this project to function as a lightweight, graph-based workflow engine. The core idea was to create something generic enough to run any sequence of steps—like a very simplified version of LangGraph—but transparent enough that you can see exactly how the state moves from A to B.
 
-The Philosophy Behind the Code
-When I read the requirements, specifically the part about "clean structure matters more than features," I decided to prioritize readability and architectural separation. I didn't want to just write a script that runs from top to bottom. Instead, I built an engine that doesn't care what the business logic is, only how to execute it.
-
 I separated the project into two distinct parts. First, there is the Engine. This is the brain. It handles the nodes, the edges, and the scary conditional logic where the path splits based on data. It uses asyncio because blocking the main thread while waiting for a step to finish feels wrong in a modern backend system.
-
 
 Second, there are the Workflows. This is where the specific business logic lives. I kept these completely decoupled from the engine so that if you wanted to add a "Data Quality Pipeline" later, you wouldn't have to touch the core graph code at all.
 
@@ -21,9 +17,7 @@ For the required sample workflow, I chose Option A: The Code Review Mini-Agent. 
 In my implementation, the system extracts code, checks its complexity, and detects issues. If the "quality score" isn't high enough, the engine uses a conditional edge to loop the state back to the beginning. It only lets the workflow finish once the code meets the threshold. It’s a simple rule-based loop, but it proves the engine can handle cycles without crashing.
 
 How to Run It
-Getting this up and running on your machine is straightforward. I kept the dependencies light. You will need Python installed, obviously. First, grab the code and navigate into the folder. You should create a virtual environment so we don't mess with your global packages. Once that is active, install the requirements.
-
-You can do that by running pip install -r requirements.txt in your terminal.
+Install the requirements.
 
 After the dependencies are settled, fire up the server with uvicorn app.main:app --reload. The API will start listening on port 8000. I included Swagger documentation, so if you open your browser to http://127.0.0.1:8000/docs, you can test the endpoints interactively without needing to construct curl commands manually.
 
@@ -40,4 +34,5 @@ There is always more to do. Right now, the state is stored in memory. It works g
 
 
 But for now, this meets the brief: it's clean, it works, and it respects the state. I hope you enjoy breaking it as much as I enjoyed building it.
+
 
